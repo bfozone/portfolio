@@ -1,0 +1,44 @@
+---
+import { skills } from "../data/resume";
+
+const categoryColors: Record<string, string> = {
+  "Risk & Regulation": "var(--ctp-green)",
+  Quantitative: "var(--ctp-teal)",
+  "Data & Coding": "var(--ctp-mauve)",
+  Platforms: "var(--ctp-blue)",
+  DevOps: "var(--ctp-peach)",
+};
+---
+
+<section id="skills" class="py-20">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="fade-in">
+      <h2 class="font-mono text-sm text-[var(--ctp-green)] mb-2">// skills</h2>
+      <h3 class="text-2xl sm:text-3xl font-bold text-[var(--ctp-text)] mb-12">
+        Technical Expertise
+      </h3>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {
+        Object.entries(skills).map(([category, items], index) => (
+          <div
+            class="fade-in bg-[var(--ctp-mantle)] border border-[var(--ctp-surface1)] rounded-lg p-6 hover:border-[var(--ctp-mauve)] transition-colors duration-200"
+            style={`transition-delay: ${index * 100}ms`}
+          >
+            <h4 class="font-mono text-sm font-semibold mb-4" style={`color: ${categoryColors[category] || "var(--ctp-mauve)"}`}>
+              {category}
+            </h4>
+            <div class="flex flex-wrap gap-2">
+              {items.map((skill) => (
+                <span class="px-3 py-1 text-sm font-mono bg-[var(--ctp-base)] text-[var(--ctp-subtext0)] rounded border border-[var(--ctp-surface1)] cursor-default">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

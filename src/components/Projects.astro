@@ -1,0 +1,64 @@
+---
+import { projects } from "../data/resume";
+---
+
+<section id="projects" class="py-20">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="fade-in">
+      <h2 class="font-mono text-sm text-[var(--ctp-green)] mb-2">// projects</h2>
+      <h3 class="text-2xl sm:text-3xl font-bold text-[var(--ctp-text)] mb-12">
+        Technical Implementations
+      </h3>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2">
+      {
+        projects.map((project, index) => (
+          <div
+            class="fade-in group bg-[var(--ctp-mantle)] border border-[var(--ctp-surface1)] rounded-lg p-6 hover:border-[var(--ctp-mauve)] transition-colors duration-200"
+            style={`transition-delay: ${index * 100}ms`}
+          >
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <div>
+                <h4 class="text-lg font-semibold text-[var(--ctp-text)] group-hover:text-[var(--ctp-mauve)] transition-colors">
+                  {project.name}
+                </h4>
+                <p class="text-sm text-[var(--ctp-teal)]">{project.subtitle}</p>
+              </div>
+              <span class="font-mono text-xs text-[var(--ctp-subtext0)] whitespace-nowrap">
+                {project.period}
+              </span>
+            </div>
+
+            <p class="text-sm text-[var(--ctp-subtext0)] mb-2">{project.company}</p>
+
+            <div class="space-y-2 mb-4">
+              {project.description.map((desc) => (
+                <p class="text-sm text-[var(--ctp-subtext0)] leading-relaxed text-justify">
+                  {desc}
+                </p>
+              ))}
+            </div>
+
+            <div class="bg-[var(--ctp-base)] border border-[var(--ctp-surface1)] rounded p-3 mb-4">
+              <p class="text-sm">
+                <span class="font-mono text-[var(--ctp-green)]">Impact:</span>{" "}
+                <span class="text-[var(--ctp-subtext0)] text-justify">{project.impact}</span>
+              </p>
+            </div>
+
+            {project.techStack && (
+              <div class="flex flex-wrap gap-2">
+                {project.techStack.map((tech) => (
+                  <span class="px-2 py-1 text-xs font-mono bg-[var(--ctp-base)] text-[var(--ctp-teal)] rounded border border-[var(--ctp-surface1)] cursor-default">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
