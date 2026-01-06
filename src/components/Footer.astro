@@ -7,7 +7,7 @@ import { personal, additional } from "../data/resume";
     <div class="fade-in grid gap-8 md:grid-cols-2">
       <!-- Languages -->
       <div>
-        <h4 class="font-mono text-sm text-[var(--ctp-green)] mb-4">// languages</h4>
+        <h4 class="font-mono text-sm text-[var(--ctp-green)] mb-4">&gt; cogitator.languages</h4>
         <div class="space-y-2">
           {
             additional.languages.map((lang) => (
@@ -22,7 +22,7 @@ import { personal, additional } from "../data/resume";
 
       <!-- Links -->
       <div>
-        <h4 class="font-mono text-sm text-[var(--ctp-green)] mb-4">// connect</h4>
+        <h4 class="font-mono text-sm text-[var(--ctp-green)] mb-4">&gt; cogitator.connect</h4>
         <div class="space-y-3">
           <a
             href={personal.linkedin}
@@ -57,7 +57,7 @@ import { personal, additional } from "../data/resume";
 
     <div class="mt-12 pt-8 border-t border-[var(--ctp-surface1)] text-center">
       <p class="font-mono text-sm text-[var(--ctp-subtext0)]">
-        Built with Astro · {new Date().getFullYear()}
+        cogitator.render() · Astro · {new Date().getFullYear()}
       </p>
     </div>
   </div>

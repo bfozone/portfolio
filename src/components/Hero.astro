@@ -1,12 +1,10 @@
 ---
-import { personal, summary } from "../data/resume";
+import { personal } from "../data/resume";
 ---
 
-<section class="min-h-screen flex items-center pt-20 pb-16">
+<section class="pt-32 pb-16">
   <div class="max-w-5xl mx-auto px-4 sm:px-6 w-full">
     <div class="fade-in">
-      <p class="font-mono text-sm text-[var(--ctp-green)] mb-4">// about</p>
-
       <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-[var(--ctp-text)] mb-4">
         {personal.name}
       </h1>
@@ -14,10 +12,6 @@ import { personal, summary } from "../data/resume";
       <h2 class="text-2xl sm:text-3xl lg:text-4xl font-semibold text-[var(--ctp-subtext0)] mb-8">
         {personal.title}
       </h2>
-
-      <p class="text-lg text-[var(--ctp-subtext0)] max-w-2xl mb-8 leading-relaxed text-justify">
-        {summary}
-      </p>
 
       <div class="flex flex-wrap items-center gap-4">
         <a

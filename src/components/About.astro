@@ -1,0 +1,19 @@
+---
+import { about } from "../data/resume";
+---
+
+<section id="about" class="py-20">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="fade-in">
+      <p class="font-mono text-sm text-[var(--ctp-green)] mb-8">&gt; cogitator.about</p>
+
+      <div class="max-w-3xl space-y-6">
+        {about.map((paragraph) => (
+          <p class="text-lg text-[var(--ctp-subtext0)] leading-relaxed">
+            {paragraph}
+          </p>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

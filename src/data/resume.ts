@@ -5,7 +5,12 @@ export const personal = {
   github: "https://github.com/bfozone",
 };
 
-export const summary = `Senior Risk Manager with a proven track record in transforming risk processes into automated, enterprise-grade solutions across asset management and banking. Skilled in combining quantitative methods with modern technology practices to build scalable risk analytics platforms. Focused on turning risk theory into practical, production-ready tools that deliver value for stakeholders and regulators.`;
+export const about = [
+  `My career has followed a consistent theme: closing the gap between risk methodology and its technical implementation. Starting in credit risk, I moved through quantitative and performance roles before taking ownership of my team's risk analytics tooling. More recently, I built an enterprise risk platform from the ground up - now handling daily monitoring across all risk dimensions.`,
+  `This path was not planned. The technical skills I acquired out of necessity, finding that the most effective way to solve risk problems was often to build the solution myself.`,
+  `I work across French, English, and German, having spent my career between Monaco, Zurich, and Basel.`,
+  `Outside of work, I attend to other machine spirits - mechanical keyboards, PC hardware, and terminal configurations that demand constant appeasement.`,
+];
 
 export const skills = {
   "Risk & Regulation": [
