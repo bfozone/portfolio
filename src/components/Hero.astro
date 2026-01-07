@@ -9,9 +9,11 @@ import { personal } from "../data/resume";
         {personal.name}
       </h1>
 
-      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-semibold text-[var(--ctp-subtext0)] mb-8">
-        {personal.title}
-      </h2>
+      <div class="font-mono text-lg sm:text-xl text-[var(--ctp-green)] mb-8 flex items-center">
+        <span class="text-[var(--ctp-subtext0)]">&gt;&nbsp;</span>
+        <span id="typed-text"></span>
+        <span id="cursor" class="ml-0.5 animate-blink">_</span>
+      </div>
 
       <div class="flex flex-wrap items-center gap-4">
         <a
@@ -46,3 +48,30 @@ import { personal } from "../data/resume";
     </div>
   </div>
 </section>
+
+<style>
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+  .animate-blink {
+    animation: blink 1s infinite;
+  }
+</style>
+
+<script define:vars={{ title: personal.title }}>
+  const typedText = document.getElementById('typed-text');
+  const text = title;
+  let index = 0;
+
+  function type() {
+    if (index < text.length) {
+      typedText.textContent += text.charAt(index);
+      index++;
+      setTimeout(type, 80);
+    }
+  }
+
+  // Start typing after a short delay
+  setTimeout(type, 500);
+</script>

@@ -5,7 +5,7 @@ export default {
     extend: {
       fontFamily: {
         mono: ['Hack Nerd Font', 'Hack', 'ui-monospace', 'monospace'],
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['Hack Nerd Font Propo', 'Hack', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       colors: {
         bg: 'var(--color-bg)',
