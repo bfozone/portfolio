@@ -75,27 +75,28 @@ import { personal } from "../data/resume";
     </div>
   </nav>
 
-  <!-- Mobile menu overlay -->
-  <div
-    id="mobile-menu"
-    class="sm:hidden fixed inset-0 top-[65px] bg-[var(--ctp-base)] transform translate-x-full transition-transform duration-300 ease-in-out"
-  >
-    <nav class="flex flex-col items-center justify-center h-full gap-8 font-mono text-lg">
-      <a href="#about" class="mobile-nav-link text-[var(--ctp-subtext0)] hover:text-[var(--ctp-mauve)] transition-colors">
-        about
-      </a>
-      <a href="#experience" class="mobile-nav-link text-[var(--ctp-subtext0)] hover:text-[var(--ctp-mauve)] transition-colors">
-        experience
-      </a>
-      <a href="#projects" class="mobile-nav-link text-[var(--ctp-subtext0)] hover:text-[var(--ctp-mauve)] transition-colors">
-        projects
-      </a>
-      <a href="#education" class="mobile-nav-link text-[var(--ctp-subtext0)] hover:text-[var(--ctp-mauve)] transition-colors">
-        education
-      </a>
-    </nav>
-  </div>
 </header>
+
+<!-- Mobile menu overlay - outside header to avoid backdrop-blur inheritance -->
+<div
+  id="mobile-menu"
+  class="sm:hidden fixed inset-0 top-[65px] z-40 bg-[#11111b] transform translate-x-full transition-transform duration-300 ease-in-out"
+>
+  <nav class="flex flex-col items-center justify-center h-full gap-8 font-mono text-lg">
+    <a href="#about" class="mobile-nav-link text-[var(--ctp-text)] hover:text-[var(--ctp-mauve)] transition-colors">
+      about
+    </a>
+    <a href="#experience" class="mobile-nav-link text-[var(--ctp-text)] hover:text-[var(--ctp-mauve)] transition-colors">
+      experience
+    </a>
+    <a href="#projects" class="mobile-nav-link text-[var(--ctp-text)] hover:text-[var(--ctp-mauve)] transition-colors">
+      projects
+    </a>
+    <a href="#education" class="mobile-nav-link text-[var(--ctp-text)] hover:text-[var(--ctp-mauve)] transition-colors">
+      education
+    </a>
+  </nav>
+</div>
 
 <script>
   const menuBtn = document.getElementById('mobile-menu-btn');

@@ -141,6 +141,15 @@ export interface Project {
   techStack?: string[];
 }
 
+export interface PersonalProject {
+  name: string;
+  subtitle: string;
+  description: string;
+  techStack: string[];
+  github?: string;
+  demo?: string;
+}
+
 export const projects: Project[] = [
   {
     name: "BAM ONE",
@@ -218,6 +227,18 @@ export const projects: Project[] = [
   },
 ];
 
+export const personalProjects: PersonalProject[] = [
+  {
+    name: "CerberusRisk",
+    subtitle: "Portfolio Risk Analytics Platform",
+    description:
+      "Demo application showcasing institutional-grade risk analytics - VaR, CVaR, Monte Carlo simulations, stress testing, and GIPS-compliant reporting",
+    techStack: ["Dash", "FastAPI", "PostgreSQL", "Docker", "Plotly"],
+    github: "https://github.com/bfozone/cerberusrisk",
+    demo: "https://app.cerberusrisk.io/",
+  },
+];
+
 export interface Education {
   degree: string;
   field: string;
@@ -256,7 +277,8 @@ export const additional = {
     {
       name: "Certificate in Quantitative Finance (CQF)",
       status: "In Progress",
-      expected: "June 2026",
+      expected: "2026",
+      url: "https://www.cqf.com/",
     },
   ],
 };

@@ -44,8 +44,8 @@ import { education, additional } from "../data/resume";
     {
       additional.certifications.length > 0 && (
         <div class="fade-in">
-          <h4 class="font-mono text-sm text-[var(--ctp-teal)] mb-4">
-            Professional Development
+          <h4 class="font-mono text-sm text-[var(--ctp-green)] mb-4">
+            &gt; cogitator.certifications
           </h4>
           <div class="flex flex-wrap gap-4">
             {additional.certifications.map((cert) => (
@@ -55,6 +55,16 @@ import { education, additional } from "../data/resume";
                   {cert.status}
                   {cert.expected && ` · Expected ${cert.expected}`}
                 </p>
+                {cert.url && (
+                  <a
+                    href={cert.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="font-mono text-sm text-[var(--ctp-green)] hover:text-[var(--ctp-mauve)] transition-colors mt-2 inline-block"
+                  >
+                    &gt; CQF
+                  </a>
+                )}
               </div>
             ))}
           </div>
