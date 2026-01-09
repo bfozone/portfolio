@@ -1,0 +1,101 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { getCollection } from "astro:content";
+
+const allLogs = await getCollection("log");
+const sortedLogs = allLogs.sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+
+// Group by year
+const logsByYear = sortedLogs.reduce(
+  (acc, entry) => {
+    const year = entry.data.date.getFullYear();
+    if (!acc[year]) acc[year] = [];
+    acc[year].push(entry);
+    return acc;
+  },
+  {} as Record<number, typeof sortedLogs>
+);
+
+const years = Object.keys(logsByYear)
+  .map(Number)
+  .sort((a, b) => b - a);
+
+function formatDate(date: Date): string {
+  return date.toISOString().split("T")[0];
+}
+---
+
+<Layout
+  title="Log Archive | Benjamin Fink"
+  description="Full archive of dev log entries."
+>
+  <Header />
+  <main id="main-content" class="pt-32 pb-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <div class="fade-in">
+        <p class="font-mono text-sm text-[var(--ctp-green)] mb-8">
+          &gt; log.archive --all ({sortedLogs.length} entries)
+        </p>
+      </div>
+
+      {
+        years.map((year, yearIndex) => (
+          <section class="mb-12">
+            <h2
+              class="fade-in font-mono text-lg text-[var(--ctp-mauve)] mb-6"
+              style={`transition-delay: ${yearIndex * 100}ms`}
+            >
+              {year}
+            </h2>
+            <div class="space-y-6">
+              {logsByYear[year].map(async (entry, index) => {
+                const { Content } = await entry.render();
+                return (
+                  <article
+                    class="fade-in border-l-2 border-[var(--ctp-surface1)] hover:border-[var(--ctp-mauve)] pl-4 py-2 transition-colors duration-200"
+                    style={`transition-delay: ${yearIndex * 100 + index * 50}ms`}
+                  >
+                    <div class="flex items-center gap-3 mb-2">
+                      <time
+                        datetime={entry.data.date.toISOString()}
+                        class="font-mono text-sm text-[var(--ctp-mauve)]"
+                      >
+                        {formatDate(entry.data.date)}
+                      </time>
+                      {entry.data.tags && (
+                        <div class="flex gap-2">
+                          {entry.data.tags.map((tag: string) => (
+                            <span class="font-mono text-xs text-[var(--ctp-subtext0)] bg-[var(--ctp-surface0)] px-2 py-0.5 rounded">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                    <div class="text-[var(--ctp-text)] leading-relaxed prose-invert prose-sm prose-code:text-[var(--ctp-green)] prose-code:bg-[var(--ctp-surface0)] prose-code:px-1 prose-code:rounded">
+                      <Content />
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </section>
+        ))
+      }
+
+      <div class="mt-12 fade-in">
+        <a
+          href="/log"
+          class="font-mono text-sm text-[var(--ctp-subtext0)] hover:text-[var(--ctp-mauve)] transition-colors"
+        >
+          &lt;- back to recent
+        </a>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>

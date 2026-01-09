@@ -1,0 +1,93 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { getCollection } from "astro:content";
+
+const RECENT_LIMIT = 15;
+
+const allLogs = await getCollection("log");
+const sortedLogs = allLogs.sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+const recentLogs = sortedLogs.slice(0, RECENT_LIMIT);
+const hasMore = sortedLogs.length > RECENT_LIMIT;
+
+function formatDate(date: Date): string {
+  return date.toISOString().split("T")[0];
+}
+---
+
+<Layout
+  title="Log | Benjamin Fink"
+  description="Dev log - thoughts, learnings, and things I'm working on."
+>
+  <Header />
+  <main id="main-content" class="pt-32 pb-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <div class="fade-in">
+        <p class="font-mono text-sm text-[var(--ctp-green)] mb-8">
+          &gt; log.recent --limit {RECENT_LIMIT}
+        </p>
+      </div>
+
+      <div class="space-y-6">
+        {
+          recentLogs.map(async (entry, index) => {
+            const { Content } = await entry.render();
+            return (
+              <article
+                class="fade-in border-l-2 border-[var(--ctp-surface1)] hover:border-[var(--ctp-mauve)] pl-4 py-2 transition-colors duration-200"
+                style={`transition-delay: ${index * 50}ms`}
+              >
+                <div class="flex items-center gap-3 mb-2">
+                  <time
+                    datetime={entry.data.date.toISOString()}
+                    class="font-mono text-sm text-[var(--ctp-mauve)]"
+                  >
+                    {formatDate(entry.data.date)}
+                  </time>
+                  {entry.data.tags && (
+                    <div class="flex gap-2">
+                      {entry.data.tags.map((tag: string) => (
+                        <span class="font-mono text-xs text-[var(--ctp-subtext0)] bg-[var(--ctp-surface0)] px-2 py-0.5 rounded">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                <div class="text-[var(--ctp-text)] leading-relaxed prose-invert prose-sm prose-code:text-[var(--ctp-green)] prose-code:bg-[var(--ctp-surface0)] prose-code:px-1 prose-code:rounded">
+                  <Content />
+                </div>
+              </article>
+            );
+          })
+        }
+      </div>
+
+      {
+        hasMore && (
+          <div class="mt-12 fade-in">
+            <a
+              href="/log/archive"
+              class="font-mono text-sm text-[var(--ctp-subtext0)] hover:text-[var(--ctp-mauve)] transition-colors"
+            >
+              &gt; view full log ({sortedLogs.length} entries)
+            </a>
+          </div>
+        )
+      }
+
+      <div class="mt-12 fade-in">
+        <a
+          href="/"
+          class="font-mono text-sm text-[var(--ctp-subtext0)] hover:text-[var(--ctp-mauve)] transition-colors"
+        >
+          &lt;- back
+        </a>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>
