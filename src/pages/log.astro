@@ -1,14 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import FooterMinimal from "../components/FooterMinimal.astro";
 import { getCollection } from "astro:content";
 
 const RECENT_LIMIT = 15;
 
 const allLogs = await getCollection("log");
 const sortedLogs = allLogs.sort(
-  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
 );
 const recentLogs = sortedLogs.slice(0, RECENT_LIMIT);
 const hasMore = sortedLogs.length > RECENT_LIMIT;
@@ -89,5 +89,5 @@ function formatDate(date: Date): string {
       </div>
     </div>
   </main>
-  <Footer />
+  <FooterMinimal />
 </Layout>

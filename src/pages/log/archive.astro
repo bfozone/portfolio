@@ -1,12 +1,12 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Header from "../../components/Header.astro";
-import Footer from "../../components/Footer.astro";
+import FooterMinimal from "../../components/FooterMinimal.astro";
 import { getCollection } from "astro:content";
 
 const allLogs = await getCollection("log");
 const sortedLogs = allLogs.sort(
-  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
 );
 
 // Group by year
@@ -17,7 +17,7 @@ const logsByYear = sortedLogs.reduce(
     acc[year].push(entry);
     return acc;
   },
-  {} as Record<number, typeof sortedLogs>
+  {} as Record<number, typeof sortedLogs>,
 );
 
 const years = Object.keys(logsByYear)
@@ -97,5 +97,5 @@ function formatDate(date: Date): string {
       </div>
     </div>
   </main>
-  <Footer />
+  <FooterMinimal />
 </Layout>
