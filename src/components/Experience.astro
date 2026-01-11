@@ -5,7 +5,9 @@ import { experience } from "../data/resume";
 <section id="experience" class="py-20 bg-[var(--ctp-mantle)]">
   <div class="max-w-5xl mx-auto px-4 sm:px-6">
     <div class="fade-in">
-      <h2 class="font-mono text-sm text-[var(--ctp-green)] mb-12">&gt; cogitator.experience</h2>
+      <h2 class="font-mono text-sm text-[var(--ctp-green)] mb-12">
+        &gt; cogitator.experience
+      </h2>
     </div>
 
     <div class="space-y-8">
@@ -25,9 +27,14 @@ import { experience } from "../data/resume";
                   </h4>
                   <p class="text-[var(--ctp-mauve)] font-medium">
                     {job.company}
-                    <span class="text-[var(--ctp-subtext0)]"> · {job.location}</span>
+                    <span class="text-[var(--ctp-subtext0)]">
+                      {" "}
+                      · {job.location}
+                    </span>
                   </p>
-                  <p class="text-sm text-[var(--ctp-subtext0)]">{job.department}</p>
+                  <p class="text-sm text-[var(--ctp-subtext0)]">
+                    {job.department}
+                  </p>
                 </div>
                 <span class="font-mono text-sm text-[var(--ctp-green)] whitespace-nowrap">
                   {job.period}
@@ -37,7 +44,9 @@ import { experience } from "../data/resume";
               <ul class="space-y-2">
                 {job.highlights.map((highlight) => (
                   <li class="flex gap-3 text-sm text-[var(--ctp-subtext0)] text-justify">
-                    <span class="text-[var(--ctp-teal)] flex-shrink-0 leading-relaxed">▹</span>
+                    <span class="text-[var(--ctp-teal)] flex-shrink-0 leading-relaxed">
+                      ▹
+                    </span>
                     <span class="leading-relaxed">{highlight}</span>
                   </li>
                 ))}

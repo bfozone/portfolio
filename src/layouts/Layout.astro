@@ -7,6 +7,7 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -22,43 +23,77 @@ const { title, description } = Astro.props;
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url} />
-    <meta property="og:image" content={new URL('/og-image.png', Astro.site)} />
+    <meta property="og:image" content={new URL("/og-image.png", Astro.site)} />
+    <meta
+      property="og:image:alt"
+      content="Benjamin Fink portfolio cover image"
+    />
     <meta property="og:site_name" content="Benjamin Fink" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={new URL('/og-image.png', Astro.site)} />
+    <meta name="twitter:image" content={new URL("/og-image.png", Astro.site)} />
+    <meta
+      name="twitter:image:alt"
+      content="Benjamin Fink portfolio cover image"
+    />
+
+    <link rel="canonical" href={canonicalUrl} />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#1e1e2e"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="#eff1f5"
+    />
 
     <!-- Fonts - Hack Nerd Font (Mono + Propo) -->
+    <link
+      rel="preload"
+      href="/fonts/HackNerdFontPropo-Regular.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/HackNerdFont-Regular.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
     <style>
       /* Hack Nerd Font Propo - Proportional (body text) */
       @font-face {
-        font-family: 'Hack Nerd Font Propo';
-        src: url('https://cdn.jsdelivr.net/gh/ryanoasis/nerd-fonts@v3.1.1/patched-fonts/Hack/Regular/HackNerdFontPropo-Regular.ttf') format('truetype');
+        font-family: "Hack Nerd Font Propo";
+        src: url("/fonts/HackNerdFontPropo-Regular.ttf") format("truetype");
         font-weight: 400;
         font-style: normal;
         font-display: swap;
       }
       @font-face {
-        font-family: 'Hack Nerd Font Propo';
-        src: url('https://cdn.jsdelivr.net/gh/ryanoasis/nerd-fonts@v3.1.1/patched-fonts/Hack/Bold/HackNerdFontPropo-Bold.ttf') format('truetype');
+        font-family: "Hack Nerd Font Propo";
+        src: url("/fonts/HackNerdFontPropo-Bold.ttf") format("truetype");
         font-weight: 700;
         font-style: normal;
         font-display: swap;
       }
       /* Hack Nerd Font - Monospace (terminal elements) */
       @font-face {
-        font-family: 'Hack Nerd Font';
-        src: url('https://cdn.jsdelivr.net/gh/ryanoasis/nerd-fonts@v3.1.1/patched-fonts/Hack/Regular/HackNerdFont-Regular.ttf') format('truetype');
+        font-family: "Hack Nerd Font";
+        src: url("/fonts/HackNerdFont-Regular.ttf") format("truetype");
         font-weight: 400;
         font-style: normal;
         font-display: swap;
       }
       @font-face {
-        font-family: 'Hack Nerd Font';
-        src: url('https://cdn.jsdelivr.net/gh/ryanoasis/nerd-fonts@v3.1.1/patched-fonts/Hack/Bold/HackNerdFont-Bold.ttf') format('truetype');
+        font-family: "Hack Nerd Font";
+        src: url("/fonts/HackNerdFont-Bold.ttf") format("truetype");
         font-weight: 700;
         font-style: normal;
         font-display: swap;
@@ -75,32 +110,44 @@ const { title, description } = Astro.props;
 
     <script is:inline>
       // Theme initialization - runs before paint to prevent flash
-      (function() {
-        const theme = localStorage.getItem('theme') || 'dark';
-        document.documentElement.setAttribute('data-theme', theme);
+      (function () {
+        let theme = "dark";
+        try {
+          theme = localStorage.getItem("theme") || theme;
+        } catch (error) {
+          // Storage can be blocked (e.g., private mode); fall back to default.
+        }
+        document.documentElement.setAttribute("data-theme", theme);
       })();
     </script>
     <script>
       // Scroll animations - runs after DOM is ready
       function initScrollAnimations() {
+        const windowWithObserver = window as Window & {
+          __fadeObserver?: IntersectionObserver;
+        };
+        if (windowWithObserver.__fadeObserver) {
+          windowWithObserver.__fadeObserver.disconnect();
+        }
         const observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+                entry.target.classList.add("visible");
               }
             });
           },
-          { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+          { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
         );
 
-        document.querySelectorAll('.fade-in').forEach((el) => {
+        document.querySelectorAll(".fade-in").forEach((el) => {
           observer.observe(el);
         });
+        windowWithObserver.__fadeObserver = observer;
       }
 
-      document.addEventListener('DOMContentLoaded', initScrollAnimations);
-      document.addEventListener('astro:after-swap', initScrollAnimations);
+      document.addEventListener("DOMContentLoaded", initScrollAnimations);
+      document.addEventListener("astro:after-swap", initScrollAnimations);
     </script>
   </body>
 </html>

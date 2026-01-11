@@ -6,26 +6,46 @@ import { personal } from "../data/resume";
 <header
   class="fixed top-0 left-0 right-0 z-50 bg-[var(--ctp-base)]/80 backdrop-blur-md border-b border-[var(--ctp-surface1)]"
 >
-  <nav class="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-    <a href="#" class="font-mono font-semibold text-lg text-[var(--ctp-text)] hover:text-[var(--ctp-mauve)]">
+  <nav
+    class="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between"
+  >
+    <a
+      href="#"
+      class="font-mono font-semibold text-lg text-[var(--ctp-text)] hover:text-[var(--ctp-mauve)]"
+    >
       bf<span class="text-[var(--ctp-green)]">.</span>
     </a>
 
     <div class="flex items-center gap-6">
       <div class="hidden sm:flex items-center gap-6 font-mono text-sm">
-        <a href="/#about" class="nav-link text-[var(--ctp-subtext0)] hover:text-[var(--ctp-mauve)] transition-colors">
+        <a
+          href="/#about"
+          class="nav-link text-[var(--ctp-subtext0)] hover:text-[var(--ctp-mauve)] transition-colors"
+        >
           about
         </a>
-        <a href="/#experience" class="nav-link text-[var(--ctp-subtext0)] hover:text-[var(--ctp-mauve)] transition-colors">
+        <a
+          href="/#experience"
+          class="nav-link text-[var(--ctp-subtext0)] hover:text-[var(--ctp-mauve)] transition-colors"
+        >
           experience
         </a>
-        <a href="/#projects" class="nav-link text-[var(--ctp-subtext0)] hover:text-[var(--ctp-mauve)] transition-colors">
+        <a
+          href="/#projects"
+          class="nav-link text-[var(--ctp-subtext0)] hover:text-[var(--ctp-mauve)] transition-colors"
+        >
           projects
         </a>
-        <a href="/#education" class="nav-link text-[var(--ctp-subtext0)] hover:text-[var(--ctp-mauve)] transition-colors">
+        <a
+          href="/#education"
+          class="nav-link text-[var(--ctp-subtext0)] hover:text-[var(--ctp-mauve)] transition-colors"
+        >
           education
         </a>
-        <a href="/log" class="nav-link text-[var(--ctp-subtext0)] hover:text-[var(--ctp-mauve)] transition-colors">
+        <a
+          href="/log"
+          class="nav-link text-[var(--ctp-subtext0)] hover:text-[var(--ctp-mauve)] transition-colors"
+        >
           log
         </a>
       </div>
@@ -66,81 +86,167 @@ import { personal } from "../data/resume";
           class="sm:hidden text-[var(--ctp-subtext0)] hover:text-[var(--ctp-mauve)] transition-colors"
           aria-label="Toggle menu"
           aria-expanded="false"
+          aria-controls="mobile-menu"
         >
-          <svg class="w-6 h-6 hamburger-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          <svg
+            class="w-6 h-6 hamburger-icon"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
-          <svg class="w-6 h-6 close-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          <svg
+            class="w-6 h-6 close-icon hidden"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         </button>
       </div>
     </div>
   </nav>
-
 </header>
 
 <!-- Mobile menu overlay - outside header to avoid backdrop-blur inheritance -->
 <div
   id="mobile-menu"
   class="sm:hidden fixed inset-0 top-[65px] z-40 bg-[#11111b] transform translate-x-full transition-transform duration-300 ease-in-out"
+  aria-hidden="true"
 >
-  <nav class="flex flex-col items-center justify-center h-full gap-8 font-mono text-lg">
-    <a href="/#about" class="mobile-nav-link text-[var(--ctp-text)] hover:text-[var(--ctp-mauve)] transition-colors">
+  <nav
+    class="flex flex-col items-center justify-center h-full gap-8 font-mono text-lg"
+  >
+    <a
+      href="/#about"
+      class="mobile-nav-link text-[var(--ctp-text)] hover:text-[var(--ctp-mauve)] transition-colors"
+    >
       about
     </a>
-    <a href="/#experience" class="mobile-nav-link text-[var(--ctp-text)] hover:text-[var(--ctp-mauve)] transition-colors">
+    <a
+      href="/#experience"
+      class="mobile-nav-link text-[var(--ctp-text)] hover:text-[var(--ctp-mauve)] transition-colors"
+    >
       experience
     </a>
-    <a href="/#projects" class="mobile-nav-link text-[var(--ctp-text)] hover:text-[var(--ctp-mauve)] transition-colors">
+    <a
+      href="/#projects"
+      class="mobile-nav-link text-[var(--ctp-text)] hover:text-[var(--ctp-mauve)] transition-colors"
+    >
       projects
     </a>
-    <a href="/#education" class="mobile-nav-link text-[var(--ctp-text)] hover:text-[var(--ctp-mauve)] transition-colors">
+    <a
+      href="/#education"
+      class="mobile-nav-link text-[var(--ctp-text)] hover:text-[var(--ctp-mauve)] transition-colors"
+    >
       education
     </a>
-    <a href="/log" class="mobile-nav-link text-[var(--ctp-text)] hover:text-[var(--ctp-mauve)] transition-colors">
+    <a
+      href="/log"
+      class="mobile-nav-link text-[var(--ctp-text)] hover:text-[var(--ctp-mauve)] transition-colors"
+    >
       log
     </a>
   </nav>
 </div>
 
 <script>
-  const menuBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const hamburgerIcon = menuBtn?.querySelector('.hamburger-icon');
-  const closeIcon = menuBtn?.querySelector('.close-icon');
-  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+  const menuBtn = document.getElementById("mobile-menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const hamburgerIcon = menuBtn?.querySelector(".hamburger-icon");
+  const closeIcon = menuBtn?.querySelector(".close-icon");
+  const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
+  const focusableSelector =
+    'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+  let lastFocusedElement: HTMLElement | null = null;
 
-  function toggleMenu() {
-    const isOpen = mobileMenu?.classList.contains('translate-x-full');
+  function openMenu() {
+    mobileMenu?.classList.remove("translate-x-full");
+    mobileMenu?.classList.add("translate-x-0");
+    hamburgerIcon?.classList.add("hidden");
+    closeIcon?.classList.remove("hidden");
+    menuBtn?.setAttribute("aria-expanded", "true");
+    mobileMenu?.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    lastFocusedElement =
+      document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : null;
+    const focusables = mobileMenu?.querySelectorAll(focusableSelector);
+    (focusables?.[0] as HTMLElement | undefined)?.focus();
+  }
 
-    if (isOpen) {
-      mobileMenu?.classList.remove('translate-x-full');
-      mobileMenu?.classList.add('translate-x-0');
-      hamburgerIcon?.classList.add('hidden');
-      closeIcon?.classList.remove('hidden');
-      menuBtn?.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-    } else {
-      mobileMenu?.classList.add('translate-x-full');
-      mobileMenu?.classList.remove('translate-x-0');
-      hamburgerIcon?.classList.remove('hidden');
-      closeIcon?.classList.add('hidden');
-      menuBtn?.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
+  function closeMenu() {
+    mobileMenu?.classList.add("translate-x-full");
+    mobileMenu?.classList.remove("translate-x-0");
+    hamburgerIcon?.classList.remove("hidden");
+    closeIcon?.classList.add("hidden");
+    menuBtn?.setAttribute("aria-expanded", "false");
+    mobileMenu?.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    if (lastFocusedElement instanceof HTMLElement) {
+      lastFocusedElement.focus();
     }
   }
 
-  menuBtn?.addEventListener('click', toggleMenu);
+  function toggleMenu() {
+    const isClosed = mobileMenu?.classList.contains("translate-x-full");
+    if (isClosed) {
+      openMenu();
+    } else {
+      closeMenu();
+    }
+  }
 
-  mobileNavLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu?.classList.add('translate-x-full');
-      mobileMenu?.classList.remove('translate-x-0');
-      hamburgerIcon?.classList.remove('hidden');
-      closeIcon?.classList.add('hidden');
-      menuBtn?.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    });
+  function handleKeydown(event: KeyboardEvent) {
+    if (!mobileMenu || mobileMenu.classList.contains("translate-x-full")) {
+      return;
+    }
+
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closeMenu();
+      return;
+    }
+
+    if (event.key !== "Tab") {
+      return;
+    }
+
+    const focusables = Array.from(
+      mobileMenu.querySelectorAll(focusableSelector),
+    ) as HTMLElement[];
+    if (focusables.length === 0) {
+      return;
+    }
+
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    const isShift = event.shiftKey;
+
+    if (isShift && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!isShift && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+
+  menuBtn?.addEventListener("click", toggleMenu);
+  document.addEventListener("keydown", handleKeydown);
+
+  mobileNavLinks.forEach((link) => {
+    link.addEventListener("click", closeMenu);
   });
 </script>

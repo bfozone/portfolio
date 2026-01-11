@@ -5,12 +5,20 @@ import { projects, personalProjects } from "../data/resume";
 <section id="projects" class="py-20">
   <div class="max-w-5xl mx-auto px-4 sm:px-6">
     <div class="fade-in">
-      <div class="flex items-center gap-2 mb-12 font-mono text-sm">
+      <div
+        class="flex items-center gap-2 mb-12 font-mono text-sm"
+        role="tablist"
+        aria-label="Project category"
+      >
         <span class="text-[var(--ctp-green)]">&gt; cogitator.projects</span>
         <button
           id="tab-work"
           class="project-tab ml-4 px-2 py-1 text-[var(--ctp-mauve)] border-b-2 border-[var(--ctp-mauve)]"
           data-tab="work"
+          role="tab"
+          aria-selected="true"
+          aria-controls="projects-work"
+          tabindex="0"
         >
           --work
         </button>
@@ -18,6 +26,10 @@ import { projects, personalProjects } from "../data/resume";
           id="tab-personal"
           class="project-tab px-2 py-1 text-[var(--ctp-subtext0)] border-b-2 border-transparent hover:text-[var(--ctp-mauve)] transition-colors"
           data-tab="personal"
+          role="tab"
+          aria-selected="false"
+          aria-controls="projects-personal"
+          tabindex="-1"
         >
           --personal
         </button>
@@ -25,7 +37,13 @@ import { projects, personalProjects } from "../data/resume";
     </div>
 
     <!-- Work Projects -->
-    <div id="projects-work" class="projects-content">
+    <div
+      id="projects-work"
+      class="projects-content"
+      role="tabpanel"
+      aria-labelledby="tab-work"
+      aria-hidden="false"
+    >
       <div class="grid gap-6 md:grid-cols-2">
         {
           projects.map((project, index) => (
@@ -38,14 +56,18 @@ import { projects, personalProjects } from "../data/resume";
                   <h4 class="text-lg font-semibold text-[var(--ctp-text)] group-hover:text-[var(--ctp-mauve)] transition-colors">
                     {project.name}
                   </h4>
-                  <p class="text-sm text-[var(--ctp-teal)]">{project.subtitle}</p>
+                  <p class="text-sm text-[var(--ctp-teal)]">
+                    {project.subtitle}
+                  </p>
                 </div>
                 <span class="font-mono text-xs text-[var(--ctp-subtext0)] whitespace-nowrap">
                   {project.period}
                 </span>
               </div>
 
-              <p class="text-sm text-[var(--ctp-subtext0)] mb-2">{project.company}</p>
+              <p class="text-sm text-[var(--ctp-subtext0)] mb-2">
+                {project.company}
+              </p>
 
               <div class="space-y-2 mb-4">
                 {project.description.map((desc) => (
@@ -57,8 +79,12 @@ import { projects, personalProjects } from "../data/resume";
 
               <div class="bg-[var(--ctp-base)] border border-[var(--ctp-surface1)] rounded p-3 mb-4">
                 <p class="text-sm">
-                  <span class="font-mono text-[var(--ctp-green)]">&gt; impact:</span>{" "}
-                  <span class="text-[var(--ctp-subtext0)] text-justify">{project.impact}</span>
+                  <span class="font-mono text-[var(--ctp-green)]">
+                    &gt; impact:
+                  </span>{" "}
+                  <span class="text-[var(--ctp-subtext0)] text-justify">
+                    {project.impact}
+                  </span>
                 </p>
               </div>
 
@@ -78,7 +104,13 @@ import { projects, personalProjects } from "../data/resume";
     </div>
 
     <!-- Personal Projects -->
-    <div id="projects-personal" class="projects-content hidden">
+    <div
+      id="projects-personal"
+      class="projects-content hidden"
+      role="tabpanel"
+      aria-labelledby="tab-personal"
+      aria-hidden="true"
+    >
       <div class="grid gap-6 md:grid-cols-2">
         {
           personalProjects.map((project, index) => (
@@ -136,26 +168,36 @@ import { projects, personalProjects } from "../data/resume";
 </section>
 
 <script>
-  const tabs = document.querySelectorAll('.project-tab');
-  const contents = document.querySelectorAll('.projects-content');
+  const tabs = document.querySelectorAll(".project-tab");
+  const contents = document.querySelectorAll(".projects-content");
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const target = tab.getAttribute('data-tab');
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const target = tab.getAttribute("data-tab");
 
       // Update tab styles
-      tabs.forEach(t => {
-        t.classList.remove('text-[var(--ctp-mauve)]', 'border-[var(--ctp-mauve)]');
-        t.classList.add('text-[var(--ctp-subtext0)]', 'border-transparent');
+      tabs.forEach((t) => {
+        t.classList.remove(
+          "text-[var(--ctp-mauve)]",
+          "border-[var(--ctp-mauve)]",
+        );
+        t.classList.add("text-[var(--ctp-subtext0)]", "border-transparent");
+        t.setAttribute("aria-selected", "false");
+        t.setAttribute("tabindex", "-1");
       });
-      tab.classList.remove('text-[var(--ctp-subtext0)]', 'border-transparent');
-      tab.classList.add('text-[var(--ctp-mauve)]', 'border-[var(--ctp-mauve)]');
+      tab.classList.remove("text-[var(--ctp-subtext0)]", "border-transparent");
+      tab.classList.add("text-[var(--ctp-mauve)]", "border-[var(--ctp-mauve)]");
+      tab.setAttribute("aria-selected", "true");
+      tab.setAttribute("tabindex", "0");
 
       // Show/hide content
-      contents.forEach(content => {
-        content.classList.add('hidden');
+      contents.forEach((content) => {
+        content.classList.add("hidden");
+        content.setAttribute("aria-hidden", "true");
       });
-      document.getElementById(`projects-${target}`)?.classList.remove('hidden');
+      const activePanel = document.getElementById(`projects-${target}`);
+      activePanel?.classList.remove("hidden");
+      activePanel?.setAttribute("aria-hidden", "false");
     });
   });
 </script>

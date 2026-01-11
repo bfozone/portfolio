@@ -7,13 +7,17 @@ import { personal, additional } from "../data/resume";
     <div class="fade-in grid gap-8 md:grid-cols-2">
       <!-- Languages -->
       <div>
-        <h4 class="font-mono text-sm text-[var(--ctp-green)] mb-4">&gt; cogitator.languages</h4>
+        <h4 class="font-mono text-sm text-[var(--ctp-green)] mb-4">
+          &gt; cogitator.languages
+        </h4>
         <div class="space-y-2">
           {
             additional.languages.map((lang) => (
               <div class="flex items-center justify-between">
                 <span class="text-[var(--ctp-text)]">{lang.name}</span>
-                <span class="font-mono text-sm text-[var(--ctp-subtext0)]">{lang.level}</span>
+                <span class="font-mono text-sm text-[var(--ctp-subtext0)]">
+                  {lang.level}
+                </span>
               </div>
             ))
           }
@@ -22,7 +26,9 @@ import { personal, additional } from "../data/resume";
 
       <!-- Links -->
       <div>
-        <h4 class="font-mono text-sm text-[var(--ctp-green)] mb-4">&gt; cogitator.connect</h4>
+        <h4 class="font-mono text-sm text-[var(--ctp-green)] mb-4">
+          &gt; cogitator.connect
+        </h4>
         <div class="space-y-3">
           <a
             href={personal.linkedin}

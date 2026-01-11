@@ -5,12 +5,18 @@ import { personal } from "../data/resume";
 <section class="pt-32 pb-16">
   <div class="max-w-5xl mx-auto px-4 sm:px-6 w-full">
     <div class="fade-in">
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-[var(--ctp-text)] mb-4">
+      <h1
+        class="text-4xl sm:text-5xl lg:text-6xl font-bold text-[var(--ctp-text)] mb-4"
+      >
         {personal.name}
       </h1>
 
-      <div class="font-mono text-base sm:text-lg md:text-xl text-[var(--ctp-green)] mb-8">
-        <span class="text-[var(--ctp-subtext0)]">&gt;&nbsp;</span><span id="typed-text"></span><span id="cursor" class="animate-blink">_</span>
+      <div
+        class="font-mono text-base sm:text-lg md:text-xl text-[var(--ctp-green)] mb-8"
+      >
+        <span class="text-[var(--ctp-subtext0)]">&gt;&nbsp;</span><span
+          id="typed-text"></span><span id="cursor" class="animate-blink">_</span
+        >
       </div>
 
       <div class="flex flex-wrap items-center gap-4">
@@ -49,16 +55,22 @@ import { personal } from "../data/resume";
 
 <style>
   @keyframes blink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
+    0%,
+    50% {
+      opacity: 1;
+    }
+    51%,
+    100% {
+      opacity: 0;
+    }
   }
   .animate-blink {
     animation: blink 1s infinite;
   }
 </style>
 
-<script define:vars={{ title: personal.title }}>
-  const typedText = document.getElementById('typed-text');
+<script is:inline define:vars={{ title: personal.title }}>
+  const typedText = document.getElementById("typed-text");
   const text = title;
   let index = 0;
 

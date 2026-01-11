@@ -5,7 +5,9 @@ import { education, additional } from "../data/resume";
 <section id="education" class="py-20 bg-[var(--ctp-mantle)]">
   <div class="max-w-5xl mx-auto px-4 sm:px-6">
     <div class="fade-in">
-      <h2 class="font-mono text-sm text-[var(--ctp-green)] mb-12">&gt; cogitator.education</h2>
+      <h2 class="font-mono text-sm text-[var(--ctp-green)] mb-12">
+        &gt; cogitator.education
+      </h2>
     </div>
 
     <div class="grid gap-6 md:grid-cols-2 mb-12">
@@ -16,7 +18,9 @@ import { education, additional } from "../data/resume";
             style={`transition-delay: ${index * 100}ms`}
           >
             <div class="flex items-start justify-between gap-4 mb-3">
-              <h4 class="text-lg font-semibold text-[var(--ctp-text)]">{edu.degree}</h4>
+              <h4 class="text-lg font-semibold text-[var(--ctp-text)]">
+                {edu.degree}
+              </h4>
               <span class="font-mono text-sm text-[var(--ctp-green)] whitespace-nowrap">
                 {edu.period}
               </span>
@@ -30,8 +34,12 @@ import { education, additional } from "../data/resume";
             {edu.thesis && (
               <div class="pt-3 border-t border-[var(--ctp-surface1)]">
                 <p class="text-sm">
-                  <span class="font-mono text-[var(--ctp-subtext0)]">Thesis:</span>{" "}
-                  <span class="text-[var(--ctp-subtext0)] italic text-justify">{edu.thesis}</span>
+                  <span class="font-mono text-[var(--ctp-subtext0)]">
+                    Thesis:
+                  </span>{" "}
+                  <span class="text-[var(--ctp-subtext0)] italic text-justify">
+                    {edu.thesis}
+                  </span>
                 </p>
               </div>
             )}

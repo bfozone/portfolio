@@ -255,7 +255,8 @@ export const education: Education[] = [
     school: "Université Paris-Dauphine, PSL Research University",
     location: "Paris",
     period: "2016 - 2017",
-    thesis: "Agricultural Derivative Markets Integration: A Graph Theory Analysis",
+    thesis:
+      "Agricultural Derivative Markets Integration: A Graph Theory Analysis",
   },
   {
     degree: "Bachelor of Business Administration (BBA)",
