@@ -6,10 +6,13 @@ export const personal = {
 };
 
 export const about = [
-  `My career has followed a consistent theme: closing the gap between risk methodology and its technical implementation. Starting in credit risk, I moved through quantitative and performance roles before taking ownership of my team's risk analytics tooling. More recently, I built an enterprise risk platform from the ground up - now handling daily monitoring across all risk dimensions.`,
-  `This path was not planned. The technical skills I acquired out of necessity, finding that the most effective way to solve risk problems was often to build the solution myself.`,
-  `I work across French, English, and German, having spent my career between Monaco, Zurich, and Basel.`,
-  `Outside of work, I attend to other machine spirits - mechanical keyboards, PC hardware, and terminal configurations that demand constant appeasement.`,
+  `I work in risk.`,
+  `Started in credit methodology for private banking. Moved into quantitative analytics for asset management. Eventually stopped separating models from systems.`,
+  `Most problems weren't about better models. They were about making the models actually work. Daily, across desks, at scale. The unquantified risk was never in the portfolios.`,
+  `Implemented the models. Built the infrastructure around them. Did it twice. Both still running.`,
+  `The models keep evolving. So do the methods. That's the part I like.`,
+  `French. English. German.\nCQF in progress. Rust on the side.`,
+  `Off the clock, same energy. Split keyboards, terminal configs, and hardware that demand constant appeasement.`,
 ];
 
 export const skills = {
