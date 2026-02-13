@@ -70,7 +70,7 @@ import { education, additional } from "../data/resume";
                     rel="noopener noreferrer"
                     class="font-mono text-sm text-[var(--ctp-green)] hover:text-[var(--ctp-mauve)] transition-colors mt-2 inline-block"
                   >
-                    &gt; CQF
+                    &gt; {cert.name.match(/\(([^)]+)\)/)?.[1] || cert.name}
                   </a>
                 )}
               </div>
