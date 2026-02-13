@@ -67,18 +67,13 @@ const categoryColors: Record<string, string> = {
 
 <style>
   .skill-content {
-    display: grid;
-    grid-template-rows: 0fr;
-    transition: grid-template-rows 0.2s ease;
-  }
-
-  .skill-content > div {
+    max-height: 0;
     overflow: hidden;
-    min-height: 0;
+    transition: max-height 0.2s ease;
   }
 
   .skill-accordion.open .skill-content {
-    grid-template-rows: 1fr;
+    max-height: 500px;
   }
 
   .skill-accordion.open .skill-chevron {
