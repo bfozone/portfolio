@@ -267,5 +267,11 @@ export const additional = {
       expected: "2026",
       url: "https://www.cqf.com/",
     },
+    {
+      name: "Advanced Risk & Portfolio Management (ARPM)",
+      status: "In Progress",
+      expected: "2027",
+      url: "https://www.arpm.co/",
+    },
   ],
 };
