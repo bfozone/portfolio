@@ -2,9 +2,11 @@
 import { skills } from "../data/resume";
 
 const categoryColors: Record<string, string> = {
-  "Risk & Regulation": "var(--ctp-green)",
+  Risk: "var(--ctp-green)",
   Quantitative: "var(--ctp-teal)",
-  "Data & Coding": "var(--ctp-mauve)",
+  Languages: "var(--ctp-mauve)",
+  "Frameworks & Libraries": "var(--ctp-pink)",
+  "Data Infrastructure": "var(--ctp-lavender)",
   Platforms: "var(--ctp-blue)",
   DevOps: "var(--ctp-peach)",
 };
@@ -18,29 +20,75 @@ const categoryColors: Record<string, string> = {
       </h2>
     </div>
 
-    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+    <div class="flex flex-col gap-3 max-w-3xl">
       {
-        Object.entries(skills).map(([category, items], index) => (
-          <div
-            class="fade-in bg-[var(--ctp-mantle)] border border-[var(--ctp-surface1)] rounded-lg p-6 hover:border-[var(--ctp-mauve)] transition-colors duration-200"
-            style={`transition-delay: ${index * 100}ms`}
-          >
-            <h4
-              class="font-mono text-sm font-semibold mb-4"
-              style={`color: ${categoryColors[category] || "var(--ctp-mauve)"}`}
+        Object.entries(skills).map(([category, text], index) => {
+          const color = categoryColors[category] || "var(--ctp-mauve)";
+          return (
+            <div
+              class="fade-in skill-accordion bg-[var(--ctp-mantle)] border border-[var(--ctp-surface1)] rounded-lg overflow-hidden hover:border-[var(--ctp-mauve)] transition-colors duration-200"
+              style={`transition-delay: ${index * 100}ms`}
             >
-              {category}
-            </h4>
-            <div class="flex flex-wrap gap-2">
-              {items.map((skill) => (
-                <span class="px-3 py-1 text-sm font-mono bg-[var(--ctp-base)] text-[var(--ctp-subtext0)] rounded border border-[var(--ctp-surface1)] cursor-default">
-                  {skill}
-                </span>
-              ))}
+              <button
+                class="skill-toggle w-full flex items-center justify-between px-6 py-4 cursor-pointer"
+                type="button"
+              >
+                <h4
+                  class="font-mono text-sm font-semibold"
+                  style={`color: ${color}`}
+                >
+                  {category}
+                </h4>
+                <svg
+                  class="skill-chevron w-4 h-4 transition-transform duration-200"
+                  style={`color: ${color}`}
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+              <div class="skill-content">
+                <div class="px-6 pb-4">
+                  <p class="text-sm text-[var(--ctp-subtext0)] leading-relaxed">
+                    {text}
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
-        ))
+          );
+        })
       }
     </div>
   </div>
 </section>
+
+<style>
+  .skill-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.2s ease;
+  }
+
+  .skill-content > div {
+    overflow: hidden;
+  }
+
+  .skill-accordion.open .skill-content {
+    grid-template-rows: 1fr;
+  }
+
+  .skill-accordion.open .skill-chevron {
+    transform: rotate(180deg);
+  }
+</style>
+
+<script>
+  document.querySelectorAll(".skill-toggle").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      btn.closest(".skill-accordion")?.classList.toggle("open");
+    });
+  });
+</script>

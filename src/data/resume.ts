@@ -7,46 +7,20 @@ export const personal = {
 
 export const about = [
   `I work in risk.`,
-  `Started in credit methodology for private banking. Moved into quantitative analytics for asset management. Eventually stopped separating models from systems.`,
-  `Most problems weren't about better models. They were about making the models actually work. Daily, across desks, at scale. The unquantified risk was never in the portfolios.`,
-  `Implemented the models. Built the infrastructure around them. Did it twice. Both still running.`,
-  `The models keep evolving. So do the methods. That's the part I like.`,
+  `Started in credit methodology for private banking. Moved into market risk and quantitative analytics. Then investment risk for asset management. Eventually stopped separating models from systems.`,
+  `The unquantified risk was never in the portfolios. It's around them.`,
   `French. English. German.\nCQF in progress. Rust on the side.`,
   `Off the clock, same energy. Split keyboards, terminal configs, and hardware that demand constant appeasement.`,
 ];
 
-export const skills = {
-  "Risk & Regulation": [
-    "Market Risk",
-    "Liquidity Risk",
-    "Credit Risk",
-    "Counterparty Risk",
-    "ESG",
-  ],
-  Quantitative: [
-    "VaR/CVaR",
-    "Monte Carlo",
-    "Stress Testing",
-    "Backtesting",
-    "Attribution",
-    "Time Series Analysis",
-    "Factor Models",
-  ],
-  "Data & Coding": [
-    "Python",
-    "R",
-    "SQL",
-    "ETL Pipelines",
-    "API Integration",
-    "Data Modeling",
-  ],
-  Platforms: [
-    "Bloomberg PORT/PORT+",
-    "MSCI RiskMetrics & ESG",
-    "SimCorp Dimension",
-    "Axioma",
-  ],
-  DevOps: ["Docker", "Kubernetes", "OpenShift", "Jenkins", "Git", "Azure"],
+export const skills: Record<string, string> = {
+  Risk: `Measured it, monitored it, built the frameworks around it. Daily identification, escalation, and reporting across funds, insurance portfolios, and mandates. Most of the work is making sure nothing is invisible. The tail risk is always in the process, not the portfolio.`,
+  Quantitative: `Pricing, decomposition, simulation, stress testing, backtesting. Time series modeling, attribution, numerical methods. VaR is the output. The interesting part is what goes into it. Everything is normally distributed until it isn't.`,
+  Languages: `Several, across different paradigms. The right one depends on the problem. The wrong one teaches you something anyway. Neovim doesn't configure itself though.`,
+  "Frameworks & Libraries": `Web frameworks for dashboards and APIs. Orchestration tools for pipelines. Visualization libraries for the charts nobody reads until something breaks. The frameworks change every few years. The problems they solve don't. The litany of deployment stays the same.`,
+  "Data Infrastructure": `Relational databases at the core. Analytical query engines and columnar storage for the heavy lifting. Object storage when files need a home. ETL pipelines connecting everything that wasn't designed to talk to each other. Most of data engineering is convincing systems to cooperate.`,
+  Platforms: `Portfolio management systems, risk analytics engines, ESG data providers. The vendor ecosystem that every risk function depends on and nobody fully trusts. The real skill is knowing what each one actually does well and building around the rest.`,
+  DevOps: `Containers, orchestration, CI/CD, cloud, monitoring. The infrastructure that keeps the machine spirits running. Deployment is a ritual. Observability is a prayer.`,
 };
 
 export interface Experience {
