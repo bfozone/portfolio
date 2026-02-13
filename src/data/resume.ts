@@ -142,6 +142,7 @@ export const projects: Project[] = [
     techStack: [
       "Python",
       "Dash",
+      "FastAPI",
       "Mage AI",
       "MinIO",
       "PostgreSQL",
@@ -205,6 +206,14 @@ export const projects: Project[] = [
 ];
 
 export const personalProjects: PersonalProject[] = [
+  {
+    name: "SAMRisk",
+    subtitle: "Investment Risk & Performance Dashboard",
+    description:
+      "Mockup dashboard for portfolio analytics, risk monitoring, and performance reporting. Vue 3, ECharts, PrimeVue, with full mock API layer.",
+    techStack: ["Vue", "TypeScript", "ECharts", "PrimeVue", "Vite", "Bun"],
+    demo: "https://samrisk.cerberusrisk.io/",
+  },
   {
     name: "CerberusRisk",
     subtitle: "Portfolio Risk Analytics Platform",
