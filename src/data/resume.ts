@@ -1,6 +1,6 @@
 export const personal = {
   name: "Benjamin Fink",
-  title: "Senior Risk Manager | Risk Analytics & Technology",
+  title: "Risk Analytics & Technology",
   linkedin: "https://linkedin.com/in/bfink91",
   github: "https://github.com/bfozone",
 };
