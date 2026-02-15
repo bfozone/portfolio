@@ -72,10 +72,6 @@ const categoryColors: Record<string, string> = {
     transition: max-height 0.2s ease;
   }
 
-  .skill-accordion.open .skill-content {
-    max-height: 500px;
-  }
-
   .skill-accordion.open .skill-chevron {
     transform: rotate(180deg);
   }
@@ -84,7 +80,20 @@ const categoryColors: Record<string, string> = {
 <script>
   document.querySelectorAll(".skill-toggle").forEach((btn) => {
     btn.addEventListener("click", () => {
-      btn.closest(".skill-accordion")?.classList.toggle("open");
+      const accordion = btn.closest(".skill-accordion");
+      if (!accordion) return;
+      const content = accordion.querySelector(
+        ".skill-content",
+      ) as HTMLElement | null;
+      if (!content) return;
+
+      accordion.classList.toggle("open");
+
+      if (accordion.classList.contains("open")) {
+        content.style.maxHeight = content.scrollHeight + "px";
+      } else {
+        content.style.maxHeight = "";
+      }
     });
   });
 </script>

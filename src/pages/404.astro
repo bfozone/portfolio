@@ -1,0 +1,30 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import FooterMinimal from "../components/FooterMinimal.astro";
+---
+
+<Layout title="404 | Benjamin Fink" description="Page not found.">
+  <Header />
+  <main id="main-content" class="pt-32 pb-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <div class="fade-in">
+        <p class="font-mono text-sm text-[var(--ctp-red)] mb-4">
+          &gt; error 404
+        </p>
+        <p class="text-[var(--ctp-subtext0)] mb-8">
+          Nothing here. The page you're looking for doesn't exist.
+        </p>
+      </div>
+      <div class="fade-in">
+        <a
+          href="/"
+          class="font-mono text-sm text-[var(--ctp-subtext0)] hover:text-[var(--ctp-mauve)] transition-colors"
+        >
+          &lt;- back
+        </a>
+      </div>
+    </div>
+  </main>
+  <FooterMinimal />
+</Layout>
