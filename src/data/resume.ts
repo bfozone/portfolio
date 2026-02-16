@@ -9,8 +9,7 @@ export const about = [
   `I work in risk.`,
   `Started in credit methodology for private banking. Moved into market risk and quantitative analytics. Then investment risk for asset management. Eventually stopped separating models from systems.`,
   `The unquantified risk was never in the portfolios. It's around them.`,
-  `French. English. German.\nCQF in progress. Rust on the side.`,
-  `Off the clock, same energy. Split keyboards, terminal configs, and hardware that demand constant appeasement.`,
+  `CQF in progress. ARPM incoming. Off the clock, split keyboards, terminal configs, and hardware that demand constant appeasement.`,
 ];
 
 export const skills: Record<string, string> = {
