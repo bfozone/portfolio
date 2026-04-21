@@ -20,6 +20,7 @@ export const skills: Record<string, string> = {
   "Data Infrastructure": `Relational databases at the core. Analytical query engines and columnar storage for the heavy lifting. Object storage when files need a home. ETL pipelines connecting everything that wasn't designed to talk to each other. Most of data engineering is convincing systems to cooperate.`,
   Platforms: `Portfolio management systems, risk analytics engines, ESG data providers. The vendor ecosystem that every risk function depends on and nobody fully trusts. The real skill is knowing what each one actually does well and building around the rest.`,
   DevOps: `Containers, orchestration, CI/CD, cloud, monitoring. The infrastructure that keeps the machine spirits running. Deployment is a ritual. Observability is a prayer.`,
+  "ML & LLMs": `The board wants AI. The board cannot tell you what AI is. Classical models, embeddings, retrieval pipelines, agent loops. The maths has been there for decades, the marketing is new. Most of the work is keeping a stochastic parrot from citing sources that never existed. Evaluation is vibes with a confusion matrix. Hallucination is just another tail event nobody priced in.`,
 };
 
 export interface Experience {
