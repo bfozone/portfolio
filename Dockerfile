@@ -1,30 +1,22 @@
 # Build stage
-FROM node:20-alpine AS build
+FROM oven/bun:1-alpine AS build
 
 WORKDIR /app
 
-# Copy package files
-COPY package*.json ./
-
 # Install dependencies
-RUN npm ci
+COPY package.json bun.lock ./
+RUN bun install --frozen-lockfile
 
-# Copy source code
+# Copy source and build
 COPY . .
-
-# Build the site
-RUN npm run build
+RUN bun run build
 
 # Production stage
 FROM nginx:alpine
 
-# Copy custom nginx config
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Copy built files
 COPY --from=build /app/dist /usr/share/nginx/html
 
-# Expose port 3000
 EXPOSE 3000
 
 CMD ["nginx", "-g", "daemon off;"]
