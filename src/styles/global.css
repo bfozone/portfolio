@@ -1,6 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --font-mono: "Hack Nerd Font", "Hack", ui-monospace, monospace;
+  --font-sans:
+    "Hack Nerd Font Propo", "Hack", ui-sans-serif, system-ui, sans-serif;
+}
 
 :root {
   /* Catppuccin Mocha */

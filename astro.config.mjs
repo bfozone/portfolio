@@ -1,8 +1,11 @@
 import { defineConfig } from "astro/config";
-import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   site: "https://bf.cerberusrisk.io",
-  integrations: [tailwind(), sitemap()],
+  integrations: [sitemap()],
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });
