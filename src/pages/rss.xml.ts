@@ -13,9 +13,9 @@ export async function GET(context: APIContext) {
     description: "Dev log - thoughts, learnings, and things I'm working on.",
     site: context.site!,
     items: sorted.map((entry) => ({
-      title: entry.slug,
+      title: entry.id,
       pubDate: entry.data.date,
-      link: `/log/#${entry.slug}`,
+      link: `/log/#${entry.id}`,
     })),
   });
 }

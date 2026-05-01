@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 
 const PREVIEW_LIMIT = 4;
 
@@ -24,7 +24,7 @@ function formatDate(date: Date): string {
     <div class="space-y-4 max-w-3xl">
       {
         recentLogs.map(async (entry, index) => {
-          const { Content } = await entry.render();
+          const { Content } = await render(entry);
           return (
             <article
               class="fade-in border-l-2 border-[var(--ctp-surface1)] hover:border-[var(--ctp-mauve)] pl-4 py-2 transition-colors duration-200"
