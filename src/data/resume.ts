@@ -34,11 +34,23 @@ export interface Experience {
 
 export const experience: Experience[] = [
   {
+    title: "Head of Investment Performance and Risk Controlling",
+    company: "Basler Kantonalbank (BLKB)",
+    location: "Liestal",
+    department: "Operations",
+    period: "August 2026 - Present",
+    highlights: [
+      "Lead investment performance, investment risk, and investment guidelines across funds and mandates",
+      "Build investment risk framework and the analytics stack behind it while enhancing existing processes",
+      "Manage a team of three covering performance measurement, risk controlling, and guideline monitoring",
+    ],
+  },
+  {
     title: "Senior Risk Manager, Deputy CRO",
     company: "Baloise Asset Management",
     location: "Basel",
     department: "Risk Management",
-    period: "May 2023 - Present",
+    period: "May 2023 - July 2026",
     highlights: [
       "Initiated and led creation of unified risk infrastructure and comprehensive investment risk framework for traditional assets across funds, insurance funds, and mandates",
       "Developed production-grade risk analytics platform (BAM ONE) transforming manual processes into automated dashboards, integrating data vendors",
@@ -132,7 +144,7 @@ export const projects: Project[] = [
     name: "BAM ONE",
     subtitle: "Enterprise Risk Analytics Platform",
     company: "Baloise Asset Management",
-    period: "2023-Present",
+    period: "2023-2026",
     description: [
       "Initiated and led development from concept to production, creating unified risk infrastructure that transformed manual processes into central analytics hub",
       "Built cloud-native ecosystem: Python/Dash, Mage AI orchestration, MinIO data lake, PostgreSQL, Trino with Iceberg tables, integrated with SimCorp/Bloomberg/MSCI; full DevOps ownership (OpenShift, Jenkins/ArgoCD, Prometheus/Grafana)",
