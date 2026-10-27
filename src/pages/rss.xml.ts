@@ -12,10 +12,14 @@ export async function GET(context: APIContext) {
     title: "Benjamin Fink - Log",
     description: "Dev log - thoughts, learnings, and things I'm working on.",
     site: context.site!,
+    // The default appends "/" after the #fragment, which breaks the anchor.
+    trailingSlash: false,
+    // Entries are untitled short posts, so the post itself is the description.
+    // Link to the archive: /log/ only shows the most recent entries.
     items: sorted.map((entry) => ({
-      title: entry.id,
+      description: entry.rendered?.html ?? entry.body,
       pubDate: entry.data.date,
-      link: `/log/#${entry.id}`,
+      link: `/log/archive/#${entry.id}`,
     })),
   });
 }
