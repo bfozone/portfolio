@@ -15,6 +15,20 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script is:inline>
+      // Theme initialization - in <head> so it runs before first paint
+      (function () {
+        let theme = "dark";
+        try {
+          theme = localStorage.getItem("theme") || theme;
+        } catch (error) {
+          // Storage can be blocked (e.g., private mode); fall back to default.
+        }
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
+
     <meta name="description" content={description} />
     <meta name="author" content="Benjamin Fink" />
 
@@ -92,18 +106,6 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     <slot />
     <BackToTop />
 
-    <script is:inline>
-      // Theme initialization - runs before paint to prevent flash
-      (function () {
-        let theme = "dark";
-        try {
-          theme = localStorage.getItem("theme") || theme;
-        } catch (error) {
-          // Storage can be blocked (e.g., private mode); fall back to default.
-        }
-        document.documentElement.setAttribute("data-theme", theme);
-      })();
-    </script>
     <script>
       // Scroll animations - runs after DOM is ready
       function initScrollAnimations() {
