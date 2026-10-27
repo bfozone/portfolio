@@ -37,28 +37,36 @@ const columns = [entries.slice(0, half), entries.slice(half)];
                   class="fade-in skill-accordion bg-[var(--ctp-mantle)] border border-[var(--ctp-surface1)] rounded-lg overflow-hidden hover:border-[var(--ctp-mauve)] transition-colors duration-200"
                   style={`transition-delay: ${globalIdx * 100}ms`}
                 >
-                  <button
-                    class="skill-toggle w-full flex items-center justify-between px-6 py-4 cursor-pointer"
-                    type="button"
+                  <h3>
+                    <button
+                      class="skill-toggle w-full flex items-center justify-between px-6 py-4 cursor-pointer"
+                      type="button"
+                      aria-expanded="false"
+                      aria-controls={`skill-content-${globalIdx}`}
+                    >
+                      <span
+                        class="font-mono text-sm font-semibold"
+                        style={`color: ${color}`}
+                      >
+                        {category}
+                      </span>
+                      <svg
+                        class="skill-chevron w-4 h-4 transition-transform duration-200"
+                        style={`color: ${color}`}
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M6 9l6 6 6-6" />
+                      </svg>
+                    </button>
+                  </h3>
+                  <div
+                    id={`skill-content-${globalIdx}`}
+                    class="skill-content"
+                    inert
                   >
-                    <h4
-                      class="font-mono text-sm font-semibold"
-                      style={`color: ${color}`}
-                    >
-                      {category}
-                    </h4>
-                    <svg
-                      class="skill-chevron w-4 h-4 transition-transform duration-200"
-                      style={`color: ${color}`}
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M6 9l6 6 6-6" />
-                    </svg>
-                  </button>
-                  <div class="skill-content">
                     <div class="px-6 pb-4">
                       <p class="text-sm text-[var(--ctp-subtext0)] leading-relaxed text-justify">
                         {text}
@@ -97,13 +105,11 @@ const columns = [entries.slice(0, half), entries.slice(half)];
       ) as HTMLElement | null;
       if (!content) return;
 
-      accordion.classList.toggle("open");
-
-      if (accordion.classList.contains("open")) {
-        content.style.maxHeight = content.scrollHeight + "px";
-      } else {
-        content.style.maxHeight = "";
-      }
+      const open = accordion.classList.toggle("open");
+      btn.setAttribute("aria-expanded", String(open));
+      // max-height:0 only hides visually; inert also hides it from screen readers.
+      content.inert = !open;
+      content.style.maxHeight = open ? content.scrollHeight + "px" : "";
     });
   });
 </script>
