@@ -32,6 +32,7 @@
   window.addEventListener("scroll", toggleBackToTop);
 
   backToTopBtn?.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
   });
 </script>

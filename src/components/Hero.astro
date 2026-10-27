@@ -82,6 +82,10 @@ import { personal } from "../data/resume";
     }
   }
 
-  // Start typing after a short delay
-  setTimeout(type, 500);
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    typedText.textContent = text;
+  } else {
+    // Start typing after a short delay
+    setTimeout(type, 500);
+  }
 </script>

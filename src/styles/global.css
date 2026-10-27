@@ -138,6 +138,23 @@ body {
   transform: translateY(0);
 }
 
+/* !important so this also beats the component-scoped animations (Hero cursor) */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .fade-in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* Link styles */
 a {
   color: var(--color-accent);
