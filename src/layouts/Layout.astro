@@ -52,48 +52,26 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
       content="#eff1f5"
     />
 
-    <!-- Fonts - Hack Nerd Font (Mono + Propo) -->
+    <!-- Fonts - Hack Nerd Font (Mono), subset to Latin; body text uses system-ui -->
     <link
       rel="preload"
-      href="/fonts/HackNerdFontPropo-Regular.ttf"
+      href="/fonts/HackNerdFont-Regular.woff2"
       as="font"
-      type="font/ttf"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/HackNerdFont-Regular.ttf"
-      as="font"
-      type="font/ttf"
+      type="font/woff2"
       crossorigin
     />
     <style>
-      /* Hack Nerd Font Propo - Proportional (body text) */
-      @font-face {
-        font-family: "Hack Nerd Font Propo";
-        src: url("/fonts/HackNerdFontPropo-Regular.ttf") format("truetype");
-        font-weight: 400;
-        font-style: normal;
-        font-display: swap;
-      }
-      @font-face {
-        font-family: "Hack Nerd Font Propo";
-        src: url("/fonts/HackNerdFontPropo-Bold.ttf") format("truetype");
-        font-weight: 700;
-        font-style: normal;
-        font-display: swap;
-      }
       /* Hack Nerd Font - Monospace (terminal elements) */
       @font-face {
         font-family: "Hack Nerd Font";
-        src: url("/fonts/HackNerdFont-Regular.ttf") format("truetype");
+        src: url("/fonts/HackNerdFont-Regular.woff2") format("woff2");
         font-weight: 400;
         font-style: normal;
         font-display: swap;
       }
       @font-face {
         font-family: "Hack Nerd Font";
-        src: url("/fonts/HackNerdFont-Bold.ttf") format("truetype");
+        src: url("/fonts/HackNerdFont-Bold.woff2") format("woff2");
         font-weight: 700;
         font-style: normal;
         font-display: swap;
