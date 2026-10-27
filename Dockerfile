@@ -1,6 +1,6 @@
 # Build stage: Astro runs on Node (matching .nvmrc and CI); Bun is only the
 # package manager and script runner. Versions are pinned so builds are repeatable.
-FROM node:24.12.0-alpine AS build
+FROM node:24.22.1-alpine AS build
 COPY --from=oven/bun:1.4.4-alpine /usr/local/bin/bun /usr/local/bin/bun
 
 WORKDIR /app
