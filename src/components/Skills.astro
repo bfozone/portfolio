@@ -26,59 +26,57 @@ const columns = [entries.slice(0, half), entries.slice(half)];
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-3 items-start">
-      {
-        columns.map((col, colIdx) => (
-          <div class="flex flex-col gap-3">
-            {col.map(([category, text], innerIdx) => {
-              const color = categoryColors[category] || "var(--ctp-mauve)";
-              const globalIdx = colIdx * half + innerIdx;
-              return (
-                <div
-                  class="fade-in skill-accordion bg-[var(--ctp-mantle)] border border-[var(--ctp-surface1)] rounded-lg overflow-hidden hover:border-[var(--ctp-mauve)] transition-colors duration-200"
-                  style={`transition-delay: ${globalIdx * 100}ms`}
-                >
-                  <h3>
-                    <button
-                      class="skill-toggle w-full flex items-center justify-between px-6 py-4 cursor-pointer"
-                      type="button"
-                      aria-expanded="false"
-                      aria-controls={`skill-content-${globalIdx}`}
-                    >
-                      <span
-                        class="font-mono text-sm font-semibold"
-                        style={`color: ${color}`}
-                      >
-                        {category}
-                      </span>
-                      <svg
-                        class="skill-chevron w-4 h-4 transition-transform duration-200"
-                        style={`color: ${color}`}
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M6 9l6 6 6-6" />
-                      </svg>
-                    </button>
-                  </h3>
-                  <div
-                    id={`skill-content-${globalIdx}`}
-                    class="skill-content"
-                    inert
+      {columns.map((col, colIdx) => (
+        <div class="flex flex-col gap-3">
+          {col.map(([category, text], innerIdx) => {
+            const color = categoryColors[category] || "var(--ctp-mauve)";
+            const globalIdx = colIdx * half + innerIdx;
+            return (
+              <div
+                class="fade-in skill-accordion bg-[var(--ctp-mantle)] border border-[var(--ctp-surface1)] rounded-lg overflow-hidden hover:border-[var(--ctp-mauve)] transition-colors duration-200"
+                style={`transition-delay: ${globalIdx * 100}ms`}
+              >
+                <h3>
+                  <button
+                    class="skill-toggle w-full flex items-center justify-between px-6 py-4 cursor-pointer"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls={`skill-content-${globalIdx}`}
                   >
-                    <div class="px-6 pb-4">
-                      <p class="text-sm text-[var(--ctp-subtext0)] leading-relaxed text-justify">
-                        {text}
-                      </p>
-                    </div>
+                    <span
+                      class="font-mono text-sm font-semibold"
+                      style={`color: ${color}`}
+                    >
+                      {category}
+                    </span>
+                    <svg
+                      class="skill-chevron w-4 h-4 transition-transform duration-200"
+                      style={`color: ${color}`}
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                  </button>
+                </h3>
+                <div
+                  id={`skill-content-${globalIdx}`}
+                  class="skill-content"
+                  inert
+                >
+                  <div class="px-6 pb-4">
+                    <p class="text-sm text-[var(--ctp-subtext0)] leading-relaxed text-justify">
+                      {text}
+                    </p>
                   </div>
                 </div>
-              );
-            })}
-          </div>
-        ))
-      }
+              </div>
+            );
+          })}
+        </div>
+      ))}
     </div>
   </div>
 </section>

@@ -22,29 +22,27 @@ function formatDate(date: Date): string {
     </div>
 
     <div class="space-y-4 max-w-3xl">
-      {
-        recentLogs.map(async (entry, index) => {
-          const { Content } = await render(entry);
-          return (
-            <article
-              class="fade-in border-l-2 border-[var(--ctp-surface1)] hover:border-[var(--ctp-mauve)] pl-4 py-2 transition-colors duration-200"
-              style={`transition-delay: ${index * 50}ms`}
-            >
-              <div class="flex items-start gap-3">
-                <time
-                  datetime={entry.data.date.toISOString()}
-                  class="font-mono text-sm text-[var(--ctp-mauve)] shrink-0"
-                >
-                  {formatDate(entry.data.date)}
-                </time>
-                <div class="text-[var(--ctp-subtext0)] text-sm leading-relaxed line-clamp-2">
-                  <Content />
-                </div>
+      {recentLogs.map(async (entry, index) => {
+        const { Content } = await render(entry);
+        return (
+          <article
+            class="fade-in border-l-2 border-[var(--ctp-surface1)] hover:border-[var(--ctp-mauve)] pl-4 py-2 transition-colors duration-200"
+            style={`transition-delay: ${index * 50}ms`}
+          >
+            <div class="flex items-start gap-3">
+              <time
+                datetime={entry.data.date.toISOString()}
+                class="font-mono text-sm text-[var(--ctp-mauve)] shrink-0"
+              >
+                {formatDate(entry.data.date)}
+              </time>
+              <div class="text-[var(--ctp-subtext0)] text-sm leading-relaxed line-clamp-2">
+                <Content />
               </div>
-            </article>
-          );
-        })
-      }
+            </div>
+          </article>
+        );
+      })}
     </div>
 
     <div class="fade-in mt-8" style="transition-delay: 200ms">

@@ -10,13 +10,11 @@ import { about } from "../data/resume";
       </h2>
 
       <div class="max-w-3xl space-y-6">
-        {
-          about.map((paragraph) => (
-            <p class="text-lg text-[var(--ctp-subtext0)] leading-relaxed text-justify">
-              {paragraph}
-            </p>
-          ))
-        }
+        {about.map((paragraph) => (
+          <p class="text-lg text-[var(--ctp-subtext0)] leading-relaxed text-justify">
+            {paragraph}
+          </p>
+        ))}
       </div>
     </div>
   </div>
