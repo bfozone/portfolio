@@ -121,8 +121,8 @@ import { personal } from "../data/resume";
 <!-- Mobile menu overlay - outside header to avoid backdrop-blur inheritance -->
 <div
   id="mobile-menu"
-  class="sm:hidden fixed inset-0 top-[65px] z-40 bg-[#11111b] transform translate-x-full transition-transform duration-300 ease-in-out"
-  aria-hidden="true"
+  class="sm:hidden fixed inset-0 top-[65px] z-40 bg-[var(--ctp-crust)] transform translate-x-full transition-transform duration-300 ease-in-out"
+  inert
 >
   <nav
     class="flex flex-col items-center justify-center h-full gap-8 font-mono text-lg"
@@ -176,7 +176,7 @@ import { personal } from "../data/resume";
     hamburgerIcon?.classList.add("hidden");
     closeIcon?.classList.remove("hidden");
     menuBtn?.setAttribute("aria-expanded", "true");
-    mobileMenu?.setAttribute("aria-hidden", "false");
+    mobileMenu?.removeAttribute("inert");
     document.body.style.overflow = "hidden";
     lastFocusedElement =
       document.activeElement instanceof HTMLElement
@@ -192,7 +192,8 @@ import { personal } from "../data/resume";
     hamburgerIcon?.classList.remove("hidden");
     closeIcon?.classList.add("hidden");
     menuBtn?.setAttribute("aria-expanded", "false");
-    mobileMenu?.setAttribute("aria-hidden", "true");
+    // Off-screen is not hidden: inert keeps the links out of the Tab order.
+    mobileMenu?.setAttribute("inert", "");
     document.body.style.overflow = "";
     if (lastFocusedElement instanceof HTMLElement) {
       lastFocusedElement.focus();
