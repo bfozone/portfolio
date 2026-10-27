@@ -168,7 +168,7 @@ import { projects, personalProjects } from "../data/resume";
 </section>
 
 <script>
-  const tabs = document.querySelectorAll(".project-tab");
+  const tabs = document.querySelectorAll<HTMLButtonElement>(".project-tab");
   const contents = document.querySelectorAll(".projects-content");
 
   tabs.forEach((tab) => {
@@ -198,6 +198,22 @@ import { projects, personalProjects } from "../data/resume";
       const activePanel = document.getElementById(`projects-${target}`);
       activePanel?.classList.remove("hidden");
       activePanel?.setAttribute("aria-hidden", "false");
+    });
+
+    // Roving tabindex leaves only the selected tab in the Tab order, so the
+    // ARIA tabs pattern needs arrow keys to reach the others.
+    tab.addEventListener("keydown", (e) => {
+      const i = Array.from(tabs).indexOf(tab);
+      const next = {
+        ArrowRight: (i + 1) % tabs.length,
+        ArrowLeft: (i - 1 + tabs.length) % tabs.length,
+        Home: 0,
+        End: tabs.length - 1,
+      }[e.key];
+      if (next === undefined) return;
+      e.preventDefault();
+      tabs[next].focus();
+      tabs[next].click();
     });
   });
 </script>
